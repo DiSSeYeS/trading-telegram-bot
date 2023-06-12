@@ -13,8 +13,10 @@ router: Router = Router()
 # и состояние пользователя которого нулевое
 @router.message(select_vehicles_filter)
 async def choose_vehicle(message: Message):
-    if message.from_user is not None:
-        USERS[message.from_user.id]['condition'] = 'in_process'
+    # Следующие строчки будут нужны, когда будет реализована
+    # корзина и развит алгоритм выбора товара
+    #if message.from_user is not None:
+    #    USERS[message.from_user.id]['condition'] = 'in_process'
 
     await message.answer(text=LEXICON_RU['Машины'], reply_markup=vehicle_keyboard)
 
@@ -22,7 +24,9 @@ async def choose_vehicle(message: Message):
 # и состояние пользователя которого нулевое
 @router.message(select_details_filter)
 async def choose_detail(message: Message):
-    if message.from_user is not None:
-        USERS[message.from_user.id]['condition'] = 'in_process'
+    # Следующие строчки будут нужны, когда будет реализована
+    # корзина и развит алгоритм выбора товара
+    #if message.from_user is not None:
+    #    USERS[message.from_user.id]['condition'] = 'in_process'
 
     await message.answer(text=LEXICON_RU['Детали'], reply_markup=details_keyboard)
