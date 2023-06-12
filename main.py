@@ -1,8 +1,7 @@
 import asyncio
 
 from aiogram import Bot, Dispatcher
-from config_data.config import Config, load_config
-from handlers import other_handlers, user_handlers, admin_handlers
+from handlers import choosing_handlers, other_handlers, user_handlers, admin_handlers
 from states import BOT_TOKEN
 
 
@@ -16,6 +15,7 @@ async def main() -> None:
     # Регистрируем роутеры в диспетчере
     dp.include_router(admin_handlers.router)
     dp.include_router(user_handlers.router)
+    dp.include_router(choosing_handlers.router)
     dp.include_router(other_handlers.router)
 
     # Пропускаем накопившиеся апдейты и запускаем polling
