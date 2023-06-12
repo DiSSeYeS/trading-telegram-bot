@@ -1,4 +1,5 @@
 from config_data.config import Config, load_config
+from utils import get_buttons_values
 
 
 # Получаем словарь со списокм пользователей
@@ -34,3 +35,9 @@ VEHICLES = {
     '000003' : ['Жигули "Четёврка" 2002', '0', '99.000'],
     '000004' : ['Mercedes Benz 2019', '7', '149.900']
 }
+
+# Создаем список со значениями кнопок для деталей
+DETAILS_BUTTONS_VALUES: list[str] = get_buttons_values(DETAILS)
+
+# Создаем список со значениями кнопок для машин
+VEHICLES_BUTTONS_VALUES: list[str] = get_buttons_values(VEHICLES)

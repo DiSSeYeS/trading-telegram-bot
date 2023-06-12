@@ -1,16 +1,13 @@
-from aiogram.types import (KeyboardButton, Message, ReplyKeyboardMarkup,
-                           ReplyKeyboardRemove)
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from states import DETAILS_BUTTONS_VALUES
+from utils import get_buttons
 
 
-# Создаем кнопки для взаимодействия с деталями
-button_1: KeyboardButton = KeyboardButton(text='Деталь 1')
-button_2: KeyboardButton = KeyboardButton(text='Деталь 2')
-button_3: KeyboardButton = KeyboardButton(text='Деталь 3')
-button_4: KeyboardButton = KeyboardButton(text='Деталь 4')
+# Создаем список с кнопками для выбора типа детали
+buttons: list[KeyboardButton] = get_buttons(DETAILS_BUTTONS_VALUES)
 
 # Создаем клавиатуру с кнопками
 details_keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                    keyboard=[[button_1, button_2,
-                                               button_3, button_4]],
+                                    keyboard=[buttons],
                                                resize_keyboard=True,
                                                one_time_keyboard=True)

@@ -13,6 +13,7 @@ router: Router = Router()
 @router.message(lambda msg: msg.text == '/start')
 async def process_start_command(message: Message):
     await message.answer(text=LEXICON_RU['/start'], reply_markup=other_keyboard)
+
     if message.from_user is not None and message.from_user.id not in USERS.keys():
         USERS[message.from_user.id] = {
             'username' : message.from_user.username,

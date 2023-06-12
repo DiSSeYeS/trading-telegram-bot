@@ -11,22 +11,33 @@ router: Router = Router()
 
 @router.message(lambda msg: USERS[msg.from_user.id]['condition'] == None and msg.text.lower() == 'машины')
 async def choose_vehicle(message: Message):
+
     if message.from_user is not None:
         USERS[message.from_user.id]['condition'] = 'in_process'
+
     await message.answer(text=LEXICON_RU['Машины'], reply_markup=vehicle_keyboard)
+
+    # Эту строчку надо будет убрать, она сделана для тестовых работ
+    USERS[message.from_user.id]['condition'] = None
 
 @router.message(lambda msg: USERS[msg.from_user.id]['condition'] == None and msg.text.lower() == 'детали')
 async def choose_detail(message: Message):
+
     if message.from_user is not None:
         USERS[message.from_user.id]['condition'] = 'in_process'
+
     await message.answer(text=LEXICON_RU['Детали'], reply_markup=details_keyboard)
-    print(1)
+
+    # Эту строчку надо будет убрать, она сделана для тестовых работ
+    USERS[message.from_user.id]['condition'] = None
 
 # Этот хэндлер будет срабатывать на любые ваши сообщения,
 # кроме команд "/start" и "/help"
 @router.message()
 async def send_echo(message: Message):
+
     try:
         await message.send_copy(chat_id=message.chat.id)
+
     except TypeError:
         await message.reply(text=LEXICON_RU['no_echo'])
