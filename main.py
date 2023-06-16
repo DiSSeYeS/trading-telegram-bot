@@ -5,12 +5,12 @@ from handlers import choosing_handlers, other_handlers, user_handlers, admin_han
 from states import BOT_TOKEN
 
 
+# Инициализируем бот и диспетчер
+bot: Bot = Bot(token=BOT_TOKEN)
+dp: Dispatcher = Dispatcher()
+
 # Функция конфигурирования и запуска бота
 async def main() -> None:
-
-    # Инициализируем бот и диспетчер
-    bot: Bot = Bot(token=BOT_TOKEN)
-    dp: Dispatcher = Dispatcher()
 
     # Регистрируем роутеры в диспетчере
     dp.include_router(admin_handlers.router)

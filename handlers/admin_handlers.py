@@ -1,8 +1,4 @@
-from aiogram.types import Message
 from aiogram import Router
-from create_dp import dp
-from lexicon.ru_lexicon import LEXICON_RU
-from states import USERS, ADMINLIST
 
 
 # Инициализируем роутер уровня модуля

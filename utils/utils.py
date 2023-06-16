@@ -1,4 +1,5 @@
 from aiogram.types import KeyboardButton
+from lexicon import LEXICON_RU
 
 
 # Функция для показа характеристик деталей или автомобилей
@@ -12,9 +13,9 @@ def show_values(dictionary: dict) -> str:
         price = dictionary[item][2]
 
         if int(count) != 0:
-            result += f'Модель: {model}\n\
-Количество на складе: {count}\n\
-Цена: {price}\n\n'
+            result += f'{LEXICON_RU["model"]}{model}\n\
+{LEXICON_RU["count_on_stock"]}{count}\n\
+{LEXICON_RU["price"]}{price}\n\n'
 
     return result
 
@@ -80,7 +81,7 @@ def id_definition(model: str, dictionary: dict[str, list]) -> str:
 # Функция для отображения корзины
 def show_cart(lst: list[str], dictionary: dict[str, list]) -> str:
 
-    result: str = ''
+    result: str = LEXICON_RU['your_cart']
     total_price: int = 0
 
     for iter in range(len(lst)):
@@ -88,9 +89,9 @@ def show_cart(lst: list[str], dictionary: dict[str, list]) -> str:
         price = int(dictionary[id][2])
         total_price += price
 
-        result += f'{iter+1}. {dictionary[id][0]} - {price} Р\n'
+        result += f'{iter+1}. {dictionary[id][0]} - {price} {LEXICON_RU["wallet"]}\n'
 
-    result += f'\nОбщая цена - {total_price} Р'
+    result += f'\n{LEXICON_RU["final_price_pt1"]}{total_price}{LEXICON_RU["wallet"]}'
 
     return result
 
